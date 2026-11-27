@@ -1,0 +1,32 @@
+/* Custom cursor. Plum with a cream edge, so it reads on every section colour. */
+.cursor { position: fixed; inset: 0; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; background: transparent; overflow: hidden; pointer-events: none; opacity: 0; }
+.cursor.is-visible { opacity: 1; }
+.cursor::backdrop { display: none; }
+
+.has-cursor, .has-cursor * { cursor: none !important; }
+.has-cursor :is(input, textarea, select) { cursor: text !important; }
+
+.cursor-wheel, .cursor-dot { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.cursor-dot::after { content: ''; position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: #34284a; box-shadow: 0 0 0 1.5px #f4eee6; transition: scale 0.18s var(--ease-out); }
+
+.cursor-ring, .cursor-disc { position: absolute; border-radius: 50%; transition: scale 0.25s var(--ease-out), opacity 0.18s ease, background-color 0.18s ease; }
+
+/* The marble wheel in miniature, carrying one bowl round. */
+.cursor-ring { left: -21px; top: -21px; width: 42px; height: 42px; border: 1.5px solid #34284a; box-shadow: 0 0 0 1.5px #f4eee6, inset 0 0 0 1.5px #f4eee6; animation: cursor-spin 3.8s linear infinite; }
+.cursor-ring i { position: absolute; left: 50%; bottom: -5px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: #e8a0b4; box-shadow: 0 0 0 1.5px #34284a; }
+@keyframes cursor-spin { to { rotate: 360deg; } }
+
+.cursor-disc { left: -40px; top: -40px; display: grid; place-items: center; width: 80px; height: 80px; background: #34284a; box-shadow: 0 0 0 2px #f4eee6; color: #f4eee6; font: 700 14px/1 var(--font-body); scale: 0.4; opacity: 0; }
+
+.cursor[data-state='hover'] .cursor-ring { scale: 1.55; background: rgba(244, 238, 230, 0.28); }
+.cursor[data-state='hover'] .cursor-dot::after { scale: 0.7; }
+.cursor[data-state='label'] :is(.cursor-ring, .cursor-dot) { opacity: 0; }
+.cursor[data-state='label'] .cursor-disc { scale: 1; opacity: 1; }
+.cursor[data-state='text'] { opacity: 0; }
+.cursor.is-pressed .cursor-ring { scale: 0.75; }
+.cursor.is-pressed[data-state='label'] .cursor-disc { scale: 0.85; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-ring { animation: none; }
+  .cursor-ring, .cursor-disc, .cursor-dot::after { transition: none; }
+}

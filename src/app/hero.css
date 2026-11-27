@@ -1,0 +1,136 @@
+/* The hero is built in design units: calc(N * var(--u)). */
+.hero {
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--bg);
+  --bg: #9c8fd0;
+  --ink: #34284a;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.hero.ready { opacity: 1; }
+
+.waves {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='28' viewBox='0 0 120 28'%3E%3Cpath d='M0 14 C 15 4, 30 4, 45 14 S 75 24, 90 14 S 112 6, 120 14' fill='none' stroke='rgba(30,20,50,0.16)' stroke-width='1.1'/%3E%3C/svg%3E");
+  background-size: calc(120 * var(--u)) calc(28 * var(--u));
+}
+
+.drift { position: absolute; inset: 0; }
+
+.stage { position: absolute; left: 50%; top: 50%; width: calc(1440 * var(--u)); height: calc(900 * var(--u)); transform: translate(-50%, -50%); }
+
+.ring, .ring-shadow { position: absolute; left: 0; top: 0; border-radius: 50%; background-repeat: no-repeat; }
+
+.coupe, .coupe-shadow { position: absolute; left: 0; top: 0; max-width: none; transform-origin: center; will-change: transform; pointer-events: none; user-select: none; }
+.coupe-shadow { border-radius: 50%; background: radial-gradient(circle, rgba(25, 12, 45, 0.3) 0%, rgba(25, 12, 45, 0.14) 48%, transparent 70%); }
+
+.prop { position: absolute; left: 0; top: 0; background-repeat: no-repeat; filter: drop-shadow(0 calc(6 * var(--u)) calc(8 * var(--u)) rgba(25, 12, 45, 0.22)); pointer-events: none; }
+
+.eyebrow {
+  position: absolute;
+  left: calc(158 * var(--u));
+  top: calc(455 * var(--u));
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: calc(18 * var(--u));
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: max(9px, calc(15 * var(--u)));
+  letter-spacing: 0.42em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.eyebrow::before, .eyebrow::after { content: ''; width: calc(64 * var(--u)); height: calc(1.5 * var(--u)); background: currentColor; }
+.eyebrow::after { margin-left: calc(-6 * var(--u)); }
+
+.flavour {
+  position: absolute;
+  left: calc(190 * var(--u));
+  top: calc(497 * var(--u));
+  z-index: 6;
+  font-weight: 700;
+  font-size: max(11px, calc(21 * var(--u)));
+  line-height: 1.28;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.buy {
+  position: absolute;
+  left: calc(190 * var(--u));
+  top: calc(572 * var(--u));
+  z-index: 6;
+  width: calc(156 * var(--u));
+  height: calc(50 * var(--u));
+  padding: 0;
+  border: calc(2 * var(--u)) solid var(--ink);
+  border-radius: calc(8 * var(--u));
+  background: transparent;
+  font-weight: 600;
+  font-size: max(9px, calc(14 * var(--u)));
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.buy:hover { background: var(--ink); color: var(--bg); }
+
+.title {
+  position: absolute;
+  left: calc(190 * var(--u));
+  top: calc(632 * var(--u));
+  z-index: 3;
+  width: max-content;
+  font-family: var(--font-title);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 75% 70% at 50% 45%, transparent 55%, rgba(20, 10, 40, 0.22) 100%); }
+
+.nav-btn {
+  position: absolute;
+  top: calc(26 * var(--u));
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  width: calc(60 * var(--u));
+  height: calc(60 * var(--u));
+  padding: 0;
+  border: calc(1.5 * var(--u)) solid color-mix(in srgb, #fff 55%, transparent);
+  border-radius: calc(14 * var(--u));
+  background: transparent;
+  color: #fff;
+  transition: background-color 0.25s ease;
+}
+.nav-btn:hover { background: rgba(255, 255, 255, 0.14); }
+.nav-btn svg { width: calc(24 * var(--u)); height: calc(24 * var(--u)); }
+.nav-menu { left: calc(40 * var(--u)); }
+.nav-cart { right: calc(40 * var(--u)); }
+
+/* Portrait: a 390 wide frame, centred column. */
+.portrait .stage { width: calc(390 * var(--u)); height: calc(var(--hs) * var(--u)); }
+.portrait .eyebrow { left: 50%; top: calc(var(--copy-top) * var(--u)); transform: translateX(-50%); gap: calc(12 * var(--u)); font-size: max(9px, calc(12 * var(--u))); }
+.portrait .eyebrow::before, .portrait .eyebrow::after { width: calc(40 * var(--u)); }
+.portrait .flavour { left: 0; right: 0; top: calc((var(--copy-top) + 30) * var(--u)); text-align: center; font-size: max(11px, calc(17 * var(--u))); }
+.portrait .buy { left: calc(125 * var(--u)); top: calc((var(--copy-top) + 92) * var(--u)); width: calc(140 * var(--u)); height: calc(46 * var(--u)); font-size: max(9px, calc(13 * var(--u))); }
+.portrait .title { left: 50%; top: calc(var(--title-top) * var(--u)); transform: translateX(-50%); }
+.portrait .nav-btn { top: calc(18 * var(--u)); width: calc(48 * var(--u)); height: calc(48 * var(--u)); border-radius: calc(12 * var(--u)); }
+.portrait .nav-btn svg { width: calc(21 * var(--u)); height: calc(21 * var(--u)); }
+.portrait .nav-menu { left: calc(18 * var(--u)); }
+.portrait .nav-cart { right: calc(18 * var(--u)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { transition: none; }
+}

@@ -33,4 +33,3 @@ A **vivid, playful product experience** built with Next.js, TypeScript, and mode
 ## Preview
 
 ![Giostra Preview](public/preview.png)
-# giostra
