@@ -14,7 +14,7 @@ import { SmoothScroll } from '@/components/SmoothScroll';
 export default function Page() {
   return (
     <>
-      <a className="skip" href="#flavours">Skip to the flavours</a>
+      <a className="skip" href="#flavours">Aller aux parfums</a>
       <SmoothScroll />
       <Hero />
       <Chrome />

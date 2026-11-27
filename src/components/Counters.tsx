@@ -8,9 +8,9 @@ import { hasFinePointer, prefersReducedMotion } from '@/lib/motion-prefs';
 import { SplitHeading } from './SplitHeading';
 
 const COUNTERS = [
-  { name: 'Canal District', text: 'The lab itself. Watch the churn through the window.', hours: 'Daily, 11:00 to 22:00', flavour: 0 },
-  { name: 'Old Harbour', text: 'A walk-up hatch with cones and two-scoop cups.', hours: 'Wed to Sun, 12:00 to 21:00', flavour: 2 },
-  { name: 'Market Hill', text: 'Tubs to take home from the Saturday stall.', hours: 'Saturday, 09:00 to 15:00', flavour: 4 },
+  { name: 'Quartier du Canal', text: 'Le labo lui-même. Regardez turbiner à travers la vitre.', hours: 'Tous les jours, 11 h à 22 h', flavour: 0 },
+  { name: 'Vieux Port', text: 'Un guichet sur la rue, en cornets ou en pots deux boules.', hours: 'Mer. à dim., 12 h à 21 h', flavour: 2 },
+  { name: 'Butte du Marché', text: 'Des pots à emporter, au stand du samedi.', hours: 'Samedi, 9 h à 15 h', flavour: 4 },
 ];
 
 export function Counters() {
@@ -53,7 +53,7 @@ export function Counters() {
   return (
     <section ref={root} className="counters" id="counters" aria-labelledby="counters-title">
       <div className="wrap">
-        <SplitHeading id="counters-title">Three counters to find us</SplitHeading>
+        <SplitHeading id="counters-title">Trois comptoirs pour nous trouver</SplitHeading>
         <ul className="counter-list">
           {COUNTERS.map((c) => (
             <li key={c.name} style={{ '--tint': FLAVOURS[c.flavour].bg } as CSSProperties} onPointerEnter={() => setFlavour(c.flavour)}>

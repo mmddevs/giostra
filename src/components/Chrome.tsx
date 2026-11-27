@@ -29,12 +29,12 @@ function TopBar() {
       <div className="progress" aria-hidden="true" />
       <header className={`topbar ${visible ? 'is-visible' : ''}`} inert={!visible}>
         <a className="logo" href="#hero">Gelato Lab</a>
-        <nav aria-label="Main">
+        <nav aria-label="Principale">
           {NAV.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
         </nav>
         <div className="topbar-actions">
-          <button className="icon-btn" type="button" aria-label="Open menu" onClick={() => setPanel('menu')}><MenuIcon /></button>
-          <button className="icon-btn js-cart" type="button" aria-label="Cart" onClick={() => setPanel('cart')}>
+          <button className="icon-btn" type="button" aria-label="Ouvrir le menu" onClick={() => setPanel('menu')}><MenuIcon /></button>
+          <button className="icon-btn js-cart" type="button" aria-label="Panier" onClick={() => setPanel('cart')}>
             <CartIcon />
             {count > 0 && <span key={count} className="badge">{count}</span>}
           </button>
@@ -85,7 +85,7 @@ function Menu({ open }: { open: boolean }) {
 
   return (
     <dialog ref={ref} className="menu" aria-label="Menu" onCancel={(e) => { e.preventDefault(); setPanel(null); }}>
-      <button className="icon-btn menu-close" type="button" aria-label="Close menu" onClick={() => setPanel(null)}><CloseIcon /></button>
+      <button className="icon-btn menu-close" type="button" aria-label="Fermer le menu" onClick={() => setPanel(null)}><CloseIcon /></button>
       <nav aria-label="Menu">
         {NAV.map(([href, label], i) => (
           <a key={href} href={href} onPointerEnter={() => setBowl(i)} onFocus={() => setBowl(i)}>{label}</a>
@@ -118,13 +118,13 @@ function CartDrawer({ open }: { open: boolean }) {
     >
       <div className="drawer-panel" data-lenis-prevent>
         <div className="drawer-head">
-          <h2 id="cart-title">Your cart</h2>
-          <button className="icon-btn" type="button" aria-label="Close cart" onClick={() => setPanel(null)}><CloseIcon /></button>
+          <h2 id="cart-title">Votre panier</h2>
+          <button className="icon-btn" type="button" aria-label="Fermer le panier" onClick={() => setPanel(null)}><CloseIcon /></button>
         </div>
         {lines.length === 0 ? (
           <div className="cart-empty">
-            <p>Nothing here yet.</p>
-            <a className="btn btn-solid" href="#flavours">Pick a flavour</a>
+            <p>Rien ici pour l’instant.</p>
+            <a className="btn btn-solid" href="#flavours">Choisir un parfum</a>
           </div>
         ) : (
           <>
@@ -134,20 +134,20 @@ function CartDrawer({ open }: { open: boolean }) {
                   <img src={line.img} alt="" />
                   <div>
                     <p className="cart-name">{line.title}</p>
-                    <p className="cart-detail">{line.detail}, €{line.price}</p>
+                    <p className="cart-detail">{line.detail}, {line.price} €</p>
                   </div>
                   <div className="qty">
-                    <button type="button" aria-label={`Remove one ${line.title}`} onClick={() => cart.change(line.id, -1)}>−</button>
+                    <button type="button" aria-label={`Retirer un ${line.title}`} onClick={() => cart.change(line.id, -1)}>−</button>
                     <span>{line.qty}</span>
-                    <button type="button" aria-label={`Add one ${line.title}`} onClick={() => cart.change(line.id, 1)}>+</button>
+                    <button type="button" aria-label={`Ajouter un ${line.title}`} onClick={() => cart.change(line.id, 1)}>+</button>
                   </div>
                 </li>
               ))}
             </ul>
             <div className="cart-foot">
-              <div className="cart-sum"><span>Total</span><strong>€{total}</strong></div>
-              <button className="btn btn-solid" type="button" onClick={() => setNote(true)}>Check out</button>
-              <p className="cart-note" role="status">{note ? 'This is a design demo, so no order is placed and nothing is charged.' : ''}</p>
+              <div className="cart-sum"><span>Total</span><strong>{total} €</strong></div>
+              <button className="btn btn-solid" type="button" onClick={() => setNote(true)}>Commander</button>
+              <p className="cart-note" role="status">{note ? 'Ceci est une démo : aucune commande n’est passée et rien n’est débité.' : ''}</p>
             </div>
           </>
         )}

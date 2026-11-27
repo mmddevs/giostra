@@ -77,18 +77,18 @@ export function Playground() {
   return (
     <section ref={root} className="table" aria-labelledby="table-title">
       <div className="table-copy">
-        <SplitHeading id="table-title">Play with your food</SplitHeading>
-        <p>Everything on this table can be thrown. Go on.</p>
+        <SplitHeading id="table-title">Jouez avec la nourriture</SplitHeading>
+        <p>Tout ce qui est sur cette table se lance. Allez-y.</p>
         <div className="table-actions">
-          <button className="btn btn-solid" type="button" onClick={() => move(true)}>Scatter</button>
-          <button className="btn" type="button" onClick={() => move(false)}>Tidy up</button>
+          <button className="btn btn-solid" type="button" onClick={() => move(true)}>Éparpiller</button>
+          <button className="btn" type="button" onClick={() => move(false)}>Ranger</button>
         </div>
       </div>
       <div aria-hidden="true">
         {TOYS.map(({ item, at }) => (
           <div
             key={item}
-            data-cursor="Throw"
+            data-cursor="Lancer"
             className={`toy ${typeof item === 'number' ? 'toy-bowl' : ''}`}
             style={{ '--x': `${at[0]}%`, '--y': `${at[1]}%`, '--mx': `${at[2]}%`, '--my': `${at[3]}%` } as CSSProperties}
           >

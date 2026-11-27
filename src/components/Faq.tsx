@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { SplitHeading } from './SplitHeading';
 
 const QUESTIONS = [
-  ['How long does a tub keep?', 'Three weeks in a home freezer. Take it out ten minutes before serving so it softens.'],
-  ['Which flavours contain nuts?', 'Pistachio / Cream and Dark Choc / Hazelnut contain tree nuts. All five are made in the same lab, so traces are possible in every tub.'],
-  ['Is there a dairy-free option?', 'Ask at the counter for the mango and passion fruit sorbet. The rest of the range uses fresh milk and cream.'],
-  ['Do you deliver?', 'Boxes of four travel by cargo bike inside the city, packed on ice. You choose the day at checkout.'],
+  ['Combien de temps se garde un pot ?', 'Trois semaines au congélateur. Sortez-le dix minutes avant de servir pour qu’il s’assouplisse.'],
+  ['Quels parfums contiennent des fruits à coque ?', 'Pistache / Crème et Choco noir / Noisette en contiennent. Les cinq sont faits dans le même labo : des traces sont possibles dans chaque pot.'],
+  ['Avez-vous une option sans lait ?', 'Demandez au comptoir le sorbet mangue et passion. Le reste de la gamme contient du lait frais et de la crème.'],
+  ['Livrez-vous ?', 'Les coffrets de quatre voyagent en vélo cargo dans la ville, sur de la glace. Vous choisissez le jour à la commande.'],
 ];
 
 export function Faq() {
@@ -16,7 +16,7 @@ export function Faq() {
   return (
     <section className="faq" aria-labelledby="faq-title">
       <div className="wrap faq-grid">
-        <SplitHeading id="faq-title">Before you order</SplitHeading>
+        <SplitHeading id="faq-title">Avant de commander</SplitHeading>
         <div>
           {QUESTIONS.map(([q, a], i) => (
             <div key={q} className={`faq-item ${open === i ? 'is-open' : ''}`}>

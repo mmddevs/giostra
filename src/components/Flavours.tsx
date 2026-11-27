@@ -89,12 +89,12 @@ export function Flavours() {
     const f = FLAVOURS[i];
     const bowl = event.currentTarget.closest('.panel')!.querySelector('.panel-art img')!;
     flyToCart(f.img, bowl.getBoundingClientRect());
-    cart.add({ id: `tub-${i}`, title: f.label, detail: '500 ml tub', price: f.price, img: f.img });
+    cart.add({ id: `tub-${i}`, title: f.label, detail: 'Pot de 500 ml', price: f.price, img: f.img });
   };
 
   return (
     <section ref={root} className="flavours" id="flavours" aria-labelledby="flavours-title">
-      <h2 className="sr-only" id="flavours-title">The five flavours</h2>
+      <h2 className="sr-only" id="flavours-title">Les cinq parfums</h2>
       {/* GSAP pins this inner node, so React keeps ownership of the section. */}
       <div className="flavour-pin">
         <div className="flavour-track">
@@ -107,12 +107,12 @@ export function Flavours() {
                 </h3>
                 <p className="panel-line">{f.line}</p>
                 <ul className="chips">{f.scoops.map((s) => <li key={s}>{s}</li>)}</ul>
-                <p className="panel-note">Served in: {f.bowl.toLowerCase()}</p>
-                <button className="btn btn-solid" type="button" onClick={(e) => add(i, e)}>Add a 500 ml tub, €{f.price}</button>
+                <p className="panel-note">Servi dans : {f.bowl.toLowerCase()}</p>
+                <button className="btn btn-solid" type="button" onClick={(e) => add(i, e)}>Ajouter un pot de 500 ml, {f.price} €</button>
               </div>
               <div className="panel-visual">
                 <div className="panel-art">
-                  <img src={f.img} alt={`${f.label} gelato bowl seen from above`} loading="lazy" />
+                  <img src={f.img} alt={`Bol de gelato ${f.label} vu du dessus`} loading="lazy" />
                 </div>
                 <Sprite name={GARNISH[i]} className="panel-garnish" />
               </div>

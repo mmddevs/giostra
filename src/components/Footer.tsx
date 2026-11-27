@@ -40,26 +40,26 @@ export function Footer() {
     <footer ref={root} className="footer">
       <div className="wrap footer-top">
         <div>
-          <h2>Hear about the sixth flavour first</h2>
+          <h2>Le sixième parfum, en avant-première</h2>
           <form className="signup" noValidate onSubmit={submit}>
-            <label htmlFor="email">Email address</label>
+            <label htmlFor="email">Adresse e-mail</label>
             <div className="signup-row">
-              <input id="email" name="email" type="email" autoComplete="email" placeholder="you@example.com" required aria-invalid={status === 'error'} aria-describedby="signup-note" />
-              <button className="btn btn-solid" type="submit">Join the list</button>
+              <input id="email" name="email" type="email" autoComplete="email" placeholder="vous@exemple.com" required aria-invalid={status === 'error'} aria-describedby="signup-note" />
+              <button className="btn btn-solid" type="submit">Je m’inscris</button>
             </div>
             <p className="signup-note" id="signup-note" role="status">
-              {status === 'ok' && 'This is a design demo, so your address was not sent or saved.'}
-              {status === 'error' && 'Enter an email address like you@example.com.'}
+              {status === 'ok' && 'Ceci est une démo : votre adresse n’a été ni envoyée ni enregistrée.'}
+              {status === 'error' && 'Saisissez une adresse comme vous@exemple.com.'}
             </p>
           </form>
         </div>
-        <nav aria-label="Footer">
+        <nav aria-label="Pied de page">
           {NAV.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
           <a href="mailto:ciao@gelatolab.example">ciao@gelatolab.example</a>
         </nav>
       </div>
       <p className="footer-word" aria-hidden="true">GELATO LAB</p>
-      <p className="footer-legal wrap">Gelato Lab is a fictional brand made for a design demo. Images generated with Higgsfield.</p>
+      <p className="footer-legal wrap">Gelato Lab est une marque fictive créée pour une démo de design. Images générées avec Higgsfield.</p>
     </footer>
   );
 }

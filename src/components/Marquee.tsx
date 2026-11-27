@@ -90,7 +90,7 @@ export function Manifesto() {
   return (
     <section ref={root} className="manifesto wrap">
       <p className="manifesto-text">
-        We churn five flavours in small batches, set each one in its own ceramic bowl, and put them on a marble wheel so you can turn to the next without asking.
+        Nous turbinons cinq parfums en petites quantités, chacun dans son bol en céramique, posés sur un plateau de marbre pour passer au suivant sans rien demander.
       </p>
     </section>
   );

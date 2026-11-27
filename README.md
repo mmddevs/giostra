@@ -7,13 +7,13 @@ A **vivid, playful product experience** built with Next.js, TypeScript, and mode
 ## Features
 
 - Full-screen hero with five ceramic gelato bowls riding a marble ring that turns on its own, framed by an oversized chunky title and glass-outlined navigation buttons
-- Five flavours, Berry Rose, Pistachio Cream, Mango Passion, Dark Choc Hazelnut and Blueberry Lavender, each with its own background and ink colour
+- Five flavours, Fruits rouges Rose, Pistache Crème, Mangue Passion, Choco noir Noisette and Myrtille Lavande, each with its own background and ink colour
 - Choreographed flavour transition with a background and typography colour morph, a 72° ring turn where the bowls spin, grow and shrink, and a flavour name that fades out and back in
 - Custom desktop cursor shaped like a miniature marble wheel, with contextual labels over draggable and clickable items
 - Pinned horizontal flavour showcase, a velocity-reactive marquee, word-by-word text reveals and stacking process cards with animated counters
 - Interactive play zone with a build-your-own box of four on a spinnable wheel, and a table of bowls, cones and spoons to drag and throw
 - Front-end only cart with flying bowl feedback and a newsletter form with email validation (no checkout, and no data sent)
-- Responsive English interface with smooth scrolling, reduced-motion support, keyboard-accessible controls, and a custom brand icon
+- Responsive French interface with smooth scrolling, reduced-motion support, keyboard-accessible controls, and a custom brand icon
 
 ---
 

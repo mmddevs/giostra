@@ -11,7 +11,7 @@ export interface CartLine {
   img: string;
 }
 
-const KEY = 'giostra-cart';
+const KEY = 'giostra-cart-fr';
 const EMPTY: CartLine[] = [];
 const listeners = new Set<() => void>();
 let lines: CartLine[] | null = null;

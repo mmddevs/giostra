@@ -83,7 +83,7 @@ export function BoxBuilder() {
       ease: 'easeOut',
       onUpdate: (v) => {
         shownPrice.current = v;
-        if (priceRef.current) priceRef.current.textContent = `€${Math.round(v)}`;
+        if (priceRef.current) priceRef.current.textContent = `${Math.round(v)} €`;
       },
     });
     return () => controls.stop();
@@ -102,7 +102,7 @@ export function BoxBuilder() {
     flyToCart(FLAVOURS[filled[0]].img, wheel.current!.getBoundingClientRect());
     cart.add({
       id: `box-${sorted.join('')}`,
-      title: 'Box of four',
+      title: 'Coffret de quatre',
       detail: [...new Set(sorted)].map((c) => `${sorted.filter((v) => v === c).length} × ${FLAVOURS[c].label}`).join(', '),
       price: total,
       img: FLAVOURS[filled[0]].img,
@@ -150,36 +150,36 @@ export function BoxBuilder() {
     <section ref={root} className="box" id="box" aria-labelledby="box-title">
       <div className="wrap box-grid">
         <div className="box-copy">
-          <SplitHeading id="box-title">Fill your own wheel</SplitHeading>
-          <p>Choose four tubs. Tap a bowl or drag it onto the marble. Grab the ring to spin it.</p>
-          <div className="picker" role="group" aria-label="Choose flavours">
+          <SplitHeading id="box-title">Composez votre plateau</SplitHeading>
+          <p>Choisissez quatre pots. Touchez un bol ou glissez-le sur le marbre. Attrapez l’anneau pour le faire tourner.</p>
+          <div className="picker" role="group" aria-label="Choisir les parfums">
             {FLAVOURS.map((f, i) => (
               <button
                 key={f.label}
                 className="pick"
-                data-cursor="Add"
+                data-cursor="Ajouter"
                 type="button"
                 onPointerDown={(e) => startDrag(i, e)}
                 onClick={(e) => !dragged.current && place(i, e.currentTarget.querySelector('img')!.getBoundingClientRect())}
               >
                 <img src={f.img} alt="" loading="lazy" draggable={false} />
                 <span>{f.label}</span>
-                <em>€{f.price}</em>
+                <em>{f.price} €</em>
               </button>
             ))}
           </div>
           <div className="box-total">
-            <span aria-live="polite">{full ? `4 of 4 tubs, 10% off €${sum}` : `${filled.length} of ${SIZE} tubs`}</span>
-            <strong ref={priceRef}>€0</strong>
+            <span aria-live="polite">{full ? `4 pots sur 4, -10 % sur ${sum} €` : `${filled.length} sur ${SIZE} pots`}</span>
+            <strong ref={priceRef}>0 €</strong>
           </div>
           <div className="box-actions">
-            <button className="btn btn-solid" type="button" disabled={!full} onClick={addBox}>Add box to cart</button>
-            <button className="btn" type="button" onClick={surprise}>Surprise me</button>
-            <button className="btn btn-text" type="button" onClick={() => commit(EMPTY)}>Empty wheel</button>
+            <button className="btn btn-solid" type="button" disabled={!full} onClick={addBox}>Ajouter le coffret</button>
+            <button className="btn" type="button" onClick={surprise}>Surprenez-moi</button>
+            <button className="btn btn-text" type="button" onClick={() => commit(EMPTY)}>Vider le plateau</button>
           </div>
         </div>
         <div className="wheel" ref={wheel}>
-          <div className="wheel-spin" ref={spin} data-cursor="Spin">
+          <div className="wheel-spin" ref={spin} data-cursor="Tourner">
             <div className="marble" style={{ backgroundImage: `url("${RING_IMG}")` }} />
             {contents.map((c, i) => {
               const angle = (i / SIZE) * Math.PI * 2 + Math.PI / 4;
@@ -188,10 +188,10 @@ export function BoxBuilder() {
                   key={i}
                   ref={(node) => void (slots.current[i] = node)}
                   className="slot"
-                  data-cursor={c === null ? undefined : 'Remove'}
+                  data-cursor={c === null ? undefined : 'Retirer'}
                   type="button"
                   disabled={c === null}
-                  aria-label={c === null ? `Empty place ${i + 1}` : `Remove ${FLAVOURS[c].label}`}
+                  aria-label={c === null ? `Place ${i + 1} libre` : `Retirer ${FLAVOURS[c].label}`}
                   style={{ left: `${(50 + Math.cos(angle) * 38.5).toFixed(2)}%`, top: `${(50 + Math.sin(angle) * 38.5).toFixed(2)}%` }}
                   onClick={() => commit(live.current.map((v, n) => (n === i ? null : v)))}
                 >
@@ -202,7 +202,7 @@ export function BoxBuilder() {
           </div>
           <div className="wheel-hub" ref={hub} aria-hidden="true">
             <span className="wheel-hub-count">{full ? '✓' : SIZE - filled.length}</span>
-            <span>{full ? 'box full' : 'to go'}</span>
+            <span>{full ? 'complet' : 'à choisir'}</span>
           </div>
         </div>
       </div>

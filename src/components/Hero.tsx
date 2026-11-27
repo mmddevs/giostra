@@ -269,7 +269,7 @@ export function Hero() {
     const f = FLAVOURS[i];
     const bowl = root.current!.querySelectorAll('.coupe')[i];
     flyToCart(f.img, bowl.getBoundingClientRect());
-    cart.add({ id: `tub-${i}`, title: f.label, detail: '500 ml tub', price: f.price, img: f.img });
+    cart.add({ id: `tub-${i}`, title: f.label, detail: 'Pot de 500 ml', price: f.price, img: f.img });
   };
 
   return (
@@ -291,15 +291,15 @@ export function Hero() {
             <div key={key} className="prop" />
           ))}
           <div className="eyebrow">ARTISAN</div>
-          <p className="flavour">BERRY /<br />ROSE</p>
-          <button className="buy" type="button" onClick={buy}>BUY NOW</button>
+          <p className="flavour">FRUITS ROUGES /<br />ROSE</p>
+          <button className="buy" type="button" onClick={buy}>ACHETER</button>
         </div>
       </div>
       <div className="vignette" />
-      <button className="nav-btn nav-menu" type="button" aria-label="Open menu" onClick={() => setPanel('menu')}>
+      <button className="nav-btn nav-menu" type="button" aria-label="Ouvrir le menu" onClick={() => setPanel('menu')}>
         <MenuIcon />
       </button>
-      <button className="nav-btn nav-cart" type="button" aria-label="Cart" onClick={() => setPanel('cart')}>
+      <button className="nav-btn nav-cart" type="button" aria-label="Panier" onClick={() => setPanel('cart')}>
         <CartIcon />
         {count > 0 && <span key={count} className="badge">{count}</span>}
       </button>
